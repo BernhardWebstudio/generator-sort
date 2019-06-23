@@ -1,0 +1,31 @@
+{
+    "name": "bidirectional-rpc",
+    "version": "4.0.0",
+    "description": "Bidirectional RPC over tcp/tls",
+    "main": "build/index.js",
+    "scripts": {
+        "tsc": "tsc",
+        "test": "tsc && nyc --include build/lib multi-tape -o -p 4 build/test/test-*.js",
+        "test-travis": "tsc && nyc --include build/lib --reporter lcov multi-tape -o -p 4 build/test/test-*.js"
+    },
+    "author": "Mattias Holmlund <mattias@holmlund.se>",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattiash/bidirectional-rpc.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mattiash/bidirectional-rpc/issues"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^9.4.5",
+        "coveralls": "^3.0.4",
+        "multi-tape": "^1.2.1",
+        "nyc": "^14.1.1",
+        "prettier": "^1.18.2",
+        "purple-tape": "^2.0.1",
+        "source-map-support": "^0.5.12",
+        "typescript": "^3.5.2"
+    }
+}

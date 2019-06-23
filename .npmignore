@@ -1,0 +1,11 @@
+*.tap
+coverage/
+.nyc_output
+*.ts
+!*.d.ts
+test/
+examples/
+build/test/
+build/examples/
+.prettierrc
+.travis.yml
