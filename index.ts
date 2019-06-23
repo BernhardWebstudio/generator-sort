@@ -1,18 +1,21 @@
+type CompareResult = -1 | 1 | 0
+type CompareFunction<T> = (a: T, b: T) => CompareResult
+
 export function compareStrings(sA: string, sB: string) {
-    return [sA, sB]
+    return sA.localeCompare(sB) as CompareResult
 }
 
-type CompareFunction<T> = (a: T, b: T) => -1 | 0 | 1
+export function compareStringsCaseInsensitive(sA: string, sB: string) {
+    return compareStrings(sA.toLowerCase(), sB.toLowerCase())
+}
 
 export function sortGenerator<T>(
-    gen: (a: T, b: T) => IterableIterator<string[]>
+    gen: (a: T, b: T) => IterableIterator<CompareResult>
 ): CompareFunction<T> {
     return (a: T, b: T) => {
         for (let comp of gen(a, b)) {
-            if (comp[0] < comp[1]) {
-                return -1
-            } else if (comp[0] > comp[1]) {
-                return 1
+            if (comp) {
+                return comp
             }
         }
 
