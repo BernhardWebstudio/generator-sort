@@ -1,8 +1,16 @@
-type CompareResult = -1 | 1 | 0
+type CompareResult = number
 type CompareFunction<T> = (a: T, b: T) => CompareResult
 
 export function compareStrings(sA: string, sB: string) {
     return sA.localeCompare(sB) as CompareResult
+}
+
+export function compareNumbers(sA: number, sB: number) {
+    return sA - sB
+}
+
+export function reverse(r: CompareResult) {
+    return -r
 }
 
 export function compareStringsCaseInsensitive(sA: string, sB: string) {

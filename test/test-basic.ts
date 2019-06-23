@@ -1,7 +1,7 @@
 import 'source-map-support/register'
 
 import * as test from 'purple-tape'
-import { sortGenerator, compareStrings } from '..'
+import { sortGenerator, compareStrings, compareNumbers, reverse } from '..'
 
 test('sort strings', async function(t) {
     const input = ['b', 'a', 'aa']
@@ -13,6 +13,32 @@ test('sort strings', async function(t) {
             })
         ),
         ['a', 'aa', 'b']
+    )
+})
+
+test('sort numbers', async function(t) {
+    const input = [7, 73, 3]
+
+    t.deepEqual(
+        input.sort(
+            sortGenerator(function*(oA: number, oB: number) {
+                yield compareNumbers(oA, oB)
+            })
+        ),
+        [3, 7, 73]
+    )
+})
+
+test('sort numbers in reverse', async function(t) {
+    const input = [7, 73, 3]
+
+    t.deepEqual(
+        input.sort(
+            sortGenerator(function*(oA: number, oB: number) {
+                yield reverse(compareNumbers(oA, oB))
+            })
+        ),
+        [73, 7, 3]
     )
 })
 
