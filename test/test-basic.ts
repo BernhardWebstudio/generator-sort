@@ -16,8 +16,13 @@ test('sort strings', async function(t) {
     )
 })
 
+interface Obj {
+    k1: string
+    k2: string
+}
+
 test('sort objects', async function(t) {
-    const input = [
+    const input: Obj[] = [
         {
             k1: 'b',
             k2: 'f',
@@ -32,26 +37,25 @@ test('sort objects', async function(t) {
         },
     ]
 
-    t.deepEqual(
-        input.sort(
-            sortGenerator(function*(oA: any, oB: any) {
-                yield compareStrings(oA.k1, oB.k1)
-                yield compareStrings(oA.k2, oB.k2)
-            })
-        ),
-        [
-            {
-                k1: 'a',
-                k2: 'f',
-            },
-            {
-                k1: 'b',
-                k2: 'e',
-            },
-            {
-                k1: 'b',
-                k2: 'f',
-            },
-        ]
+    const output = input.sort(
+        sortGenerator(function*(oA: Obj, oB: Obj) {
+            yield compareStrings(oA.k1, oB.k1)
+            yield compareStrings(oA.k2, oB.k2)
+        })
     )
+
+    t.deepEqual(output, [
+        {
+            k1: 'a',
+            k2: 'f',
+        },
+        {
+            k1: 'b',
+            k2: 'e',
+        },
+        {
+            k1: 'b',
+            k2: 'f',
+        },
+    ])
 })
