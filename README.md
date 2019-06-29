@@ -55,13 +55,16 @@ characters.sort( (a,b) => {
 
 Writing these sorting functions is not particularly difficult,
 but they can become quite long and rarely look elegant.
+
+## Sorting with generator functions
+
 With the sort-generator module, the same sort can be written as
 
 ```javascript
 
 import {sortGenerator, compareStrings} from 'sort-generator'
 
-characters.sort(sortGenerator(function*(oA: Obj, oB: Obj) {
+characters.sort(sortGenerator(function*(oA, oB) {
     yield compareStrings(oA.lastName, oB.lastName)
     yield compareStrings(oA.firstName, oB.lastName)
 }))
@@ -79,3 +82,8 @@ it will be asked to yield another number until it yields a non-zero
 number or is done (i.e. returns).
 
 This makes it easy to write the comparison as a series of yield statements.
+
+## Typescript
+
+The module is written in typescript and comes with complete typings,
+but can be used in plain javascript as well.
