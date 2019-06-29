@@ -1,7 +1,12 @@
 import 'source-map-support/register'
 
 import * as test from 'purple-tape'
-import { sortGenerator, compareStrings, compareNumbers, reverse } from '..'
+import {
+    sortGenerator,
+    compareStrings,
+    compareNumbers,
+    reverse,
+} from '../index'
 
 test('sort strings', async function(t) {
     const input = ['b', 'a', 'aa']
