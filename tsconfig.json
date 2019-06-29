@@ -9,11 +9,10 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "strictNullChecks": true,
-        "skipLibCheck": true,
         "inlineSourceMap": true,
         "declaration": true,
-        "removeComments": true,
+        "removeComments": false,
         "outDir": "build/"
     },
-    "include": ["index.ts", "test/*.ts"]
+    "exclude": ["build/"]
 }
