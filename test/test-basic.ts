@@ -6,10 +6,11 @@ import {
     compareStrings,
     compareNumbers,
     reverse,
+    compareStringsCaseInsensitive,
 } from '../index'
 
 test('sort strings', async function(t) {
-    const input = ['b', 'a', 'aa']
+    const input = ['b', 'a', 'aa', 'A', 'B']
 
     t.deepEqual(
         input.sort(
@@ -17,12 +18,26 @@ test('sort strings', async function(t) {
                 yield compareStrings(oA, oB)
             })
         ),
-        ['a', 'aa', 'b']
+        ['A', 'B', 'a', 'aa', 'b']
+    )
+})
+
+test('sort strings case-insensitice', async function(t) {
+    const input = ['b', 'a', 'aa', 'A', 'B']
+
+    t.deepEqual(
+        input.sort(
+            sortGenerator(function*(oA: string, oB: string) {
+                yield compareStringsCaseInsensitive(oA, oB)
+                yield compareStrings(oA, oB)
+            })
+        ),
+        ['A', 'a', 'aa', 'B', 'b']
     )
 })
 
 test('sort numbers', async function(t) {
-    const input = [7, 73, 3]
+    const input = [3, 7, 73, 3]
 
     t.deepEqual(
         input.sort(
@@ -30,7 +45,7 @@ test('sort numbers', async function(t) {
                 yield compareNumbers(oA, oB)
             })
         ),
-        [3, 7, 73]
+        [3, 3, 7, 73]
     )
 })
 

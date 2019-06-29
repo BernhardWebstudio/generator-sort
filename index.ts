@@ -2,7 +2,7 @@ type CompareResult = number
 type CompareFunction<T> = (a: T, b: T) => CompareResult
 
 export function compareStrings(sA: string, sB: string) {
-    return sA.localeCompare(sB) as CompareResult
+    return sA > sB ? 1 : sA < sB ? -1 : 0
 }
 
 export function compareNumbers(sA: number, sB: number) {
@@ -14,7 +14,9 @@ export function reverse(r: CompareResult) {
 }
 
 export function compareStringsCaseInsensitive(sA: string, sB: string) {
-    return compareStrings(sA.toLowerCase(), sB.toLowerCase())
+    return sA.localeCompare(sB, undefined, {
+        sensitivity: 'base',
+    }) as CompareResult
 }
 
 export function sortGenerator<T>(
