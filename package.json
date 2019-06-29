@@ -1,12 +1,14 @@
 {
-    "name": "bidirectional-rpc",
-    "version": "4.0.0",
-    "description": "Bidirectional RPC over tcp/tls",
+    "name": "sort-generator",
+    "version": "1.0.0",
+    "description": "Sorting on multiple criteria with generator functions",
     "main": "build/index.js",
     "scripts": {
-        "tsc": "tsc",
+        "lint": "prettier -l *.ts **/*.ts",
+        "prepare": "tsc",
         "test": "tsc && nyc --include build/lib multi-tape -o -p 4 build/test/test-*.js",
-        "test-travis": "tsc && nyc --include build/lib --reporter lcov multi-tape -o -p 4 build/test/test-*.js"
+        "test-travis": "tsc && nyc --include build/lib --reporter lcov multi-tape -o -p 4 build/test/test-*.js",
+        "prepublishOnly": "npm run lint && npm run test"
     },
     "author": "Mattias Holmlund <mattias@holmlund.se>",
     "license": "ISC",
