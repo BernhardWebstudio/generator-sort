@@ -58,7 +58,7 @@ but they can become quite long and rarely look elegant.
 
 ## Sorting with generator functions
 
-With the sort-generator module, the same sort can be written as
+With the generator-sort module, the same sort can be written as
 
 ```javascript
 
