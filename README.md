@@ -1,8 +1,8 @@
-# Sort Generator
+# Generator sort
 
-[![Build Status](https://travis-ci.org/mattiash/sort-generator.svg?branch=master)](https://travis-ci.org/mattiash/sort-generator) [![Coverage Status](https://coveralls.io/repos/github/mattiash/sort-generator/badge.svg?branch=master)](https://coveralls.io/github/mattiash/sort-generator?branch=master)
+[![Build Status](https://travis-ci.org/mattiash/generator-sort.svg?branch=master)](https://travis-ci.org/mattiash/generator-sort) [![Coverage Status](https://coveralls.io/repos/github/mattiash/generator-sort/badge.svg?branch=master)](https://coveralls.io/github/mattiash/generator-sort?branch=master)
 
-Sort arrays based on multiple criteria
+Sorting on multiple criteria with generator functions
 
 ## Background
 
@@ -62,15 +62,15 @@ With the sort-generator module, the same sort can be written as
 
 ```javascript
 
-import {sortGenerator, compareStrings} from 'sort-generator'
+import {sortFunction, compareStrings} from 'generator-sort'
 
-characters.sort(sortGenerator(function*(oA, oB) {
+characters.sort(sortFunction(function*(oA, oB) {
     yield compareStrings(oA.lastName, oB.lastName)
     yield compareStrings(oA.firstName, oB.lastName)
 }))
 ```
 
-The `sortGenerator` function takes a generator function as its only argument.
+The `sortFunction` function takes a generator function as its only argument.
 The generator function will be called for each pair of object that shall be compared.
 The function shall yield numbers.
 If it yields a positive number,

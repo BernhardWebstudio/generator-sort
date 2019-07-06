@@ -2,7 +2,7 @@ import 'source-map-support/register'
 
 import * as test from 'purple-tape'
 import {
-    sortGenerator,
+    sortFunction,
     compareStrings,
     compareNumbers,
     reverse,
@@ -14,7 +14,7 @@ test('sort strings', async function(t) {
 
     t.deepEqual(
         input.sort(
-            sortGenerator(function*(oA: string, oB: string) {
+            sortFunction(function*(oA: string, oB: string) {
                 yield compareStrings(oA, oB)
             })
         ),
@@ -27,7 +27,7 @@ test('sort strings case-insensitice', async function(t) {
 
     t.deepEqual(
         input.sort(
-            sortGenerator(function*(oA: string, oB: string) {
+            sortFunction(function*(oA: string, oB: string) {
                 yield compareStringsCaseInsensitive(oA, oB)
                 yield compareStrings(oA, oB)
             })
@@ -41,7 +41,7 @@ test('sort numbers', async function(t) {
 
     t.deepEqual(
         input.sort(
-            sortGenerator(function*(oA: number, oB: number) {
+            sortFunction(function*(oA: number, oB: number) {
                 yield compareNumbers(oA, oB)
             })
         ),
@@ -54,7 +54,7 @@ test('sort numbers in reverse', async function(t) {
 
     t.deepEqual(
         input.sort(
-            sortGenerator(function*(oA: number, oB: number) {
+            sortFunction(function*(oA: number, oB: number) {
                 yield reverse(compareNumbers(oA, oB))
             })
         ),
@@ -84,7 +84,7 @@ test('sort objects', async function(t) {
     ]
 
     const output = input.sort(
-        sortGenerator(function*(oA: Obj, oB: Obj) {
+        sortFunction(function*(oA: Obj, oB: Obj) {
             yield compareStrings(oA.k1, oB.k1)
             yield compareStrings(oA.k2, oB.k2)
         })

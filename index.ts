@@ -19,7 +19,7 @@ export function compareStringsCaseInsensitive(sA: string, sB: string) {
     }) as CompareResult
 }
 
-export function sortGenerator<T>(
+export function sortFunction<T>(
     gen: (a: T, b: T) => IterableIterator<CompareResult>
 ): CompareFunction<T> {
     return (a: T, b: T) => {

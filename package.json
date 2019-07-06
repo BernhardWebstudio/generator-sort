@@ -1,5 +1,5 @@
 {
-    "name": "sort-generator",
+    "name": "generator-sort",
     "version": "1.0.0",
     "description": "Sorting on multiple criteria with generator functions",
     "main": "build/index.js",
@@ -14,10 +14,10 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "https://github.com/mattiash/sort-generator.git"
+        "url": "https://github.com/mattiash/generator-sort.git"
     },
     "bugs": {
-        "url": "https://github.com/mattiash/sort-generator/issues"
+        "url": "https://github.com/mattiash/generator-sort/issues"
     },
     "dependencies": {},
     "devDependencies": {
