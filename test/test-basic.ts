@@ -2,19 +2,19 @@ import 'source-map-support/register'
 
 import * as test from 'purple-tape'
 import {
-    sortFunction,
-    compareStrings,
     compareNumbers,
-    reverse,
+    compareStrings,
     compareStringsCaseInsensitive,
+    reverse,
+    sortFunction,
 } from '../index'
 
-test('sort strings', async function(t) {
+test.test('sort strings', async function (t) {
     const input = ['b', 'a', 'aa', 'A', 'B']
 
     t.deepEqual(
         input.sort(
-            sortFunction(function*(oA: string, oB: string) {
+            sortFunction(function* (oA: string, oB: string) {
                 yield compareStrings(oA, oB)
             })
         ),
@@ -22,12 +22,12 @@ test('sort strings', async function(t) {
     )
 })
 
-test('sort strings case-insensitice', async function(t) {
+test.test('sort strings case-insensitice', async function (t) {
     const input = ['b', 'a', 'aa', 'A', 'B']
 
     t.deepEqual(
         input.sort(
-            sortFunction(function*(oA: string, oB: string) {
+            sortFunction(function* (oA: string, oB: string) {
                 yield compareStringsCaseInsensitive(oA, oB)
                 yield compareStrings(oA, oB)
             })
@@ -36,12 +36,12 @@ test('sort strings case-insensitice', async function(t) {
     )
 })
 
-test('sort numbers', async function(t) {
+test.test('sort numbers', async function (t) {
     const input = [3, 7, 73, 3]
 
     t.deepEqual(
         input.sort(
-            sortFunction(function*(oA: number, oB: number) {
+            sortFunction(function* (oA: number, oB: number) {
                 yield compareNumbers(oA, oB)
             })
         ),
@@ -49,12 +49,12 @@ test('sort numbers', async function(t) {
     )
 })
 
-test('sort numbers in reverse', async function(t) {
+test.test('sort numbers in reverse', async function (t) {
     const input = [7, 73, 3]
 
     t.deepEqual(
         input.sort(
-            sortFunction(function*(oA: number, oB: number) {
+            sortFunction(function* (oA: number, oB: number) {
                 yield reverse(compareNumbers(oA, oB))
             })
         ),
@@ -67,7 +67,7 @@ interface Obj {
     k2: string
 }
 
-test('sort objects', async function(t) {
+test.test('sort objects', async function (t) {
     const input: Obj[] = [
         {
             k1: 'b',
@@ -84,7 +84,7 @@ test('sort objects', async function(t) {
     ]
 
     const output = input.sort(
-        sortFunction(function*(oA: Obj, oB: Obj) {
+        sortFunction(function* (oA: Obj, oB: Obj) {
             yield compareStrings(oA.k1, oB.k1)
             yield compareStrings(oA.k2, oB.k2)
         })
